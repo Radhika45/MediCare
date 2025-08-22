@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import certifi
@@ -5,8 +7,9 @@ import certifi
 class MongoDBHelper:
 
     def __init__(self, collection="users"):
-        uri = "mongodb+srv://radhika:radhika9@cluster0.ku8ndcy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
+        load_dotenv()
+        uri = os.getenv("MONGODB_URI")
+        
         # Only if you face SSL error
         ca = certifi.where()
 
@@ -24,7 +27,7 @@ class MongoDBHelper:
             print(e)
 
         # Get reference to the database
-        self.db = client['Python']
+        self.db = client['MediCare+']
         self.collection = self.db[collection]
 
     def insert(self, document):
