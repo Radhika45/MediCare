@@ -303,7 +303,7 @@ def main():
     # In order to use Session Tracking, create a Secret Key
     web_app.secret_key = "doctors-app-key-v1"
     # Run the App infinitely, till user wont quite
-    web_app.run()
+    web_app.run(port=5000)
     # web_app.run(port=5001) # optionally you can give the port number
 if __name__ == "__main__":
     main()
